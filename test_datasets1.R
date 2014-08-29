@@ -1,4 +1,10 @@
 
+#' ---
+#' title: "Playing with dummy data"
+#' author: "Jose M. Martín"
+#' date: "28/8/2014"
+#' ---
+#' 
 #Playing with dummy data downloaded from https://raw.githubusercontent.com/dhavide/MedicalData/master/MedicalData.txt
 
 MedicalData <- read.delim("~/R/datasciencecoursera/MedicalData.txt", stringsAsFactors=FALSE,na.strings="N/A")
@@ -10,4 +16,7 @@ aggregate( Pulse ~ Sex, MedicalData, hist )
 MDbS<-split(MedicalData,MedicalData$Sex)
 
 mean(MDbS$M$Height)
+
 hist(MDbS$M$Height)
+hist(MDbS$F$Pulse)
+

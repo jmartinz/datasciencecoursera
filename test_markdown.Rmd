@@ -1,0 +1,48 @@
+---
+title: "Test MarkDown document"
+author: "JMMP"
+date: "29/08/2014"
+output: html_document
+---
+
+This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
+
+When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
+
+- Load and adapt data
+```{r, echo=FALSE}
+MedicalData <- read.delim("~/R/datasciencecoursera/MedicalData.txt", stringsAsFactors=FALSE,na.strings="N/A")
+MedicalData["Pulse"]<-as.numeric(MedicalData$Pulse)
+MedicalData["Height"]<-as.numeric(MedicalData$Height)
+```
+
+- The mean of Pulse aggregate by sex:
+
+```{r, echo=FALSE}
+aggregate( Pulse ~ Sex, MedicalData, mean )
+```
+
+- Histogram  of Pulse aggregate by sex:
+```{r,echo=FALSE}
+aggregate( Pulse ~ Sex, MedicalData, hist )
+
+```
+
+- Split data by sex
+```{r,echo=FALSE}
+
+MDbS<-split(MedicalData,MedicalData$Sex)
+```
+
+- Mean of male height
+```{r,echo=FALSE}
+mean(MDbS$M$Height)
+```
+
+- Histogram of female pulse
+```{r,echo=FALSE}
+hist(MDbS$F$Pulse)
+```
+
+
+
